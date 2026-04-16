@@ -18,8 +18,8 @@ public class Main {
         // Modelos de IoC
         // 1.DI
 
-        // @Inject
-        // private PedidoService service;
+        @Inject
+        private PedidoService service;
 
         // 2. Service locator
 
