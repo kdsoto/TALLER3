@@ -7,17 +7,20 @@ import jakarta.inject.Inject;
 public class NotificadorSelector {
 
     @Inject
-    @Mail
-    private Notificador mail;
+    private NotificadorMail mail;
     @Inject
-    @SMS
-    private Notificador sms;
+    private NotificadorSMS sms;
+    @Inject
+    private NotificadorWhatsApp whatsapp;
 
     public Notificador seleccionar(double monto) {
-        if (monto > 100) {
-            return mail;
-        } else {
+        if (monto <= 120 && monto >= 50) {
             return sms;
+        } if(monto < 50) {
+            return whatsapp;
+        }
+        else {
+            return mail;
         }
     }
 }
