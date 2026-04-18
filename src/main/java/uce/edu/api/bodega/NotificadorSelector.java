@@ -14,13 +14,13 @@ public class NotificadorSelector {
     private NotificadorWhatsApp whatsapp;
 
     public Notificador seleccionar(double monto) {
-        if (monto <= 120 && monto >= 50) {
-            return sms;
-        } if(monto < 50) {
+        if (monto > 120) {
+            return mail;
+        } if(monto > 50) {
             return whatsapp;
         }
         else {
-            return mail;
+            return sms;
         }
     }
 }

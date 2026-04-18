@@ -37,20 +37,24 @@ public class PedidoService {
     @Inject
     private NotificadorSelector selector;
 
-    private PagoEstrategia pago;
+    @Inject
+    private ComprabanteSelector comprobanteSelector;
 
-    public void registar(Pedido pedido) {
+    public void registar(Pedido pedido,PagoEstrategia pago) {
         System.out.println("Registrando pedido");
         System.out.println("Cliente: " + pedido.getCliente());
         System.out.println("Total: " + pedido.getTotal());
         System.out.println("Guardando en la base de datos");
 
-        this.pago.ejecutarPago(pedido.getTotal());
+        pago.ejecutarPago(pedido.getTotal());
 
         // sin inyeccion de dependencias
         // NotificadorMail notificadorMail = new NotificadorMail();
         Notificador notificador = this.selector.seleccionar(pedido.getTotal());
         notificador.enviar(pedido.getDestino(), "Pedido registrado con exito");
+
+        Comprobante comprobante = this.comprobanteSelector.seleccionar(pedido.getDestino());
+        System.out.println(comprobante.generarComprobante(pedido));
     }
 
 }

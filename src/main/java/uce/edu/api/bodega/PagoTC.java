@@ -7,7 +7,7 @@ public class PagoTC implements PagoEstrategia {
 
     @Override
     public void ejecutarPago(double valor) {
-        System.out.println("Presenta una pantalla" + "\n" + "Realizando cobro");
+        System.out.println("Presenta una pantalla TC" + "\n" + "Realizando cobro");
     }
 
 }
