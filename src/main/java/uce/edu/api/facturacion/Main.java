@@ -18,14 +18,14 @@ public class Main {
         FacturadorService service;
 
         @Override
-        public int run(String... args) throws Exception {
+        public int run(String... args) {
 
-            Cliente cliente = new Cliente(
-                "Dylan Soto",
-                "Laptop",
-                1200.00,
-                "dylan@gmail.com"
-            );
+            Cliente cliente = Cliente.builder()
+                    .nombre("Dylan Soto")
+                    .producto("Laptop")
+                    .total(1200.00)
+                    .correo("dylan@gmail.com")
+                    .build();
 
             service.facturar(cliente);
 

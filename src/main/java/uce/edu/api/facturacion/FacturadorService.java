@@ -7,13 +7,15 @@ import jakarta.inject.Inject;
 public class FacturadorService {
 
     @Inject
-    private Notificador notificador;
+    private NotificadorSelector selector;
 
     public void facturar(Cliente cliente) {
+
         System.out.println("Generando factura...");
         System.out.println("Cliente: " + cliente.getNombre());
         System.out.println("Total: " + cliente.getTotal());
-        System.out.println("Guardando factura en la base de datos");
+
+        Notificador notificador = selector.seleccionar("email");
 
         notificador.enviar(
             cliente.getCorreo(),
