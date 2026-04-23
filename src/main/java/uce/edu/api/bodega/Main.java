@@ -13,53 +13,23 @@ public class Main {
     public static class App implements QuarkusApplication {
 
         @Inject
-        private AmbitoAplicacion ambitoAplicacion;
+        private ProcesadorVentaService procesadorVentaService;
 
         @Inject
-        private ClaseIntermedia claseIntermedia;
-
-        @Inject
-        private AmbitoRequest ambitoRequest;
-
-        @Inject
-        private AmbitoInject ambitoInject;
-
-        @Inject
-        private AmbitoSingleton ambitoSingleton;
+        private EstadisticasVentasGlobales estadisticasVentasGlobales;
 
         @Override
         public int run(String... args) {
+            Venta venta1 = new Venta("Dylan", 70.0);
+            this.procesadorVentaService.procesar(venta1);
 
-            System.out.println(this.ambitoAplicacion.incrementarContador());
-            System.out.println("este valor: " + this.ambitoAplicacion.incrementarContador());
-            System.out.println("este valor: " + this.ambitoAplicacion.incrementarContador());
-            System.out.println("este valor: " + this.ambitoAplicacion.incrementarContador());
-            System.out.println("---------------");
+            Venta venta2 = new Venta("Maria", 40.0);
+            this.procesadorVentaService.procesar(venta2);
 
-            this.claseIntermedia.imprimirObjetoValor();
+            Venta venta3 = new Venta("Carlos", 20.0);
+            this.procesadorVentaService.procesar(venta3);
 
-            //Request es solo para ambito web
-            /*System.out.println("-----------------");
-            System.out.println("AMBITO REQUEST");
-            System.out.println(this.ambitoRequest.incrementarContador());
-            System.out.println(this.ambitoRequest.incrementarContador());
-            System.out.println(this.ambitoRequest.incrementarContador());*/
-
-            //AMBITO DEPENDENT
-            System.out.println("*******AMBITO DEPENDENT************");
-            System.out.println(this.ambitoInject.incrementarContador());
-            System.out.println(this.ambitoInject.incrementarContador());
-            System.out.println(this.ambitoInject.incrementarContador());
-
-            this.claseIntermedia.imprimirObjetoValorInject();
-
-            //AMBITO SINGLETON
-            System.out.println("*******AMBITO SINGLETON************");
-            System.out.println(this.ambitoSingleton.incrementarContador());
-            System.out.println(this.ambitoSingleton.incrementarContador());
-            System.out.println(this.ambitoSingleton.incrementarContador());
-
-            this.claseIntermedia.imprimirObjetoValorSingleton();
+            this.estadisticasVentasGlobales.mostrarEstadisticasGlobales();
             return 0;
         }
     }

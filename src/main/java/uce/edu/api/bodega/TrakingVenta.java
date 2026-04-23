@@ -1,0 +1,22 @@
+package uce.edu.api.bodega;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Dependent;
+
+@Dependent
+public class TrakingVenta {
+
+    private long tiempoInicio = 0;
+    private long tiempoFin = 0;
+
+    public void iniciar() {
+        this.tiempoInicio = this.tiempoInicio + System.currentTimeMillis();
+    }
+
+    public void finalizar() {
+        this.tiempoFin = this.tiempoFin + System.currentTimeMillis();
+        long tiempoEjecucion = tiempoFin - tiempoInicio;
+        System.out.println("Tiempo de ejecución: " + tiempoEjecucion + " ms");
+    }
+
+}
