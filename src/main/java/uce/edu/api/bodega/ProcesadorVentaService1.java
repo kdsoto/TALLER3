@@ -1,23 +1,21 @@
 package uce.edu.api.bodega;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 
 @ApplicationScoped
-public class ProcesadorVentaService {
+public class ProcesadorVentaService1 {
     @Inject
     private EstadisticasVentasGlobales estadisticasVentasGlobales;
 
-    //Aqui como se inyecto TrakingVenta se crea un objeto   
+    //Aqui como se inyecto TrakingVenta se crea un objeto
     @Inject
     private TrakingVenta trakingVenta;
 
     public void procesar(Venta venta) {
-        this.trakingVenta.reiniciar();
-
         this.trakingVenta.iniciar();
         // Iniciar la venta
-
         System.out.println("Procesando venta...");
         // Consultando el stock de cada item
         // Consultando en la base de datos

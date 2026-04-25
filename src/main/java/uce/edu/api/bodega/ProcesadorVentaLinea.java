@@ -1,10 +1,11 @@
 package uce.edu.api.bodega;
 
-import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 
-@ApplicationScoped
-public class ProcesadorVentaService {
+@Dependent
+public class ProcesadorVentaLinea {
+
     @Inject
     private EstadisticasVentasGlobales estadisticasVentasGlobales;
 
@@ -13,11 +14,11 @@ public class ProcesadorVentaService {
     private TrakingVenta trakingVenta;
 
     public void procesar(Venta venta) {
+
         this.trakingVenta.reiniciar();
 
         this.trakingVenta.iniciar();
         // Iniciar la venta
-
         System.out.println("Procesando venta...");
         // Consultando el stock de cada item
         // Consultando en la base de datos
@@ -33,4 +34,5 @@ public class ProcesadorVentaService {
         // Registramos las estadisticas globales
         this.estadisticasVentasGlobales.registrarVenta(venta.getTotal());
     }
+
 }
