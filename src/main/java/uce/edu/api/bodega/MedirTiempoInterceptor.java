@@ -1,5 +1,6 @@
 package uce.edu.api.bodega;
 
+import jakarta.annotation.Priority;
 import jakarta.interceptor.AroundInvoke;
 import jakarta.interceptor.Interceptor;
 import jakarta.interceptor.InvocationContext;
@@ -8,6 +9,7 @@ import jakarta.interceptor.InvocationContext;
 @MedirTiempo
 // Con esta anotacion le indicamos que esta clase es un interceptor, es decir, que va a interceptar los metodos marcados con la anotacion @MedirTiempo
 @Interceptor
+@Priority(2)
 public class MedirTiempoInterceptor {
 
     // Con esta anotacion le indicamos que este metodo se va a ejecutar alrededor del metodo interceptado, es decir, que se va a ejecutar antes y despues del metodo interceptado
@@ -15,6 +17,7 @@ public class MedirTiempoInterceptor {
     @AroundInvoke
     public Object medirTiempo(InvocationContext context) throws Exception {
         System.out.println("Se ejecuto antes del tiempo. ");
+        System.out.println("Metodo interceptado: " + context.getMethod().getName());
         long inicio = System.currentTimeMillis();
         
         // Inicia la ejecucion del metodo

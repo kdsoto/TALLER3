@@ -16,19 +16,13 @@ public class Main {
         private ProcesarServiceTiempo procesarServiceTiempo;
 
         @Inject
-        private InventarioService inventarioService;
-
-        @Inject
         private EstadisticasVentasGlobales estadisticasVentasGlobales;
 
         @Override
         public int run(String... args) {
             Venta venta1 = new Venta("Dylan", 70.0);
             this.procesarServiceTiempo.procesar(venta1);
-            this.procesarServiceTiempo.reProcesando(venta1);
-
-            Producto producto1 = new Producto("Coca Cola", 2.5);
-            this.inventarioService.RegistarInventario(producto1);
+            //this.procesarServiceTiempo.reProcesando(venta1);
 
             this.estadisticasVentasGlobales.mostrarEstadisticasGlobales();
             return 0;

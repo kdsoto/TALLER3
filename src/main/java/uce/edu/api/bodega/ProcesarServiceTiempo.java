@@ -1,5 +1,6 @@
 package uce.edu.api.bodega;
 
+import jakarta.annotation.Priority;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
@@ -10,6 +11,7 @@ public class ProcesarServiceTiempo {
     private EstadisticasVentasGlobales estadisticasVentasGlobales;
 
     @MedirTiempo
+    @Log
     public void procesar(Venta venta) {
 
         System.out.println("Procesando venta...");
@@ -25,6 +27,8 @@ public class ProcesarServiceTiempo {
 
         // Registramos las estadisticas globales
         this.estadisticasVentasGlobales.registrarVenta(venta.getTotal());
+        System.out.println("Finalizando venta...");
+        //this.reProcesando(venta);
     }
 
     @MedirTiempo
@@ -42,5 +46,6 @@ public class ProcesarServiceTiempo {
 
         // Registramos las estadisticas globales
         this.estadisticasVentasGlobales.registrarVenta(venta.getTotal());
+        System.out.println("Finalizando venta...");
     }
 }
