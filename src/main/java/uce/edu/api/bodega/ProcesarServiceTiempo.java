@@ -1,6 +1,5 @@
 package uce.edu.api.bodega;
 
-import jakarta.annotation.Priority;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
