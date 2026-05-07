@@ -1,8 +1,10 @@
 package uce.edu.api.bodega;
 
+import jakarta.annotation.Priority;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
+@Priority(1)
 public class DescuentoISD implements Descuento{
     @Override
     public double aplicarDescuento(double valor) {
